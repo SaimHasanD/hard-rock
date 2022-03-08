@@ -1,14 +1,13 @@
 // calling A.P.I to get the song
-const searchSongs = () => {
+const searchSongs = async() => {
     const searchText = document.getElementById('searchText').value;
     const url = `https://api.lyrics.ovh/suggest/${searchText}`
     // get data
-    fetch(url)
-        .then(res => res.json())
-        .then(data => displaySongs(data.data))
+    const res = await fetch(url);
+    const data = await res.json();
+    displaySongs(data.data);
 }
 
-// show song title, artist name and preview
 const displaySongs = (songs) => {
     const songContainer = document.getElementById('songContainer');
     songContainer.textContent = '';
@@ -32,13 +31,22 @@ const displaySongs = (songs) => {
 }
 
 // get song lyrics
-const getLyric = (artist, title) =>{
+const getLyric = async (artist, title) =>{
     const url = `https://api.lyrics.ovh/v1/${artist}/${title}`
     // get lyric
-    fetch(url)
-        .then(res => res.json())
-        .then(data => displayLyrics(data.lyrics))
+    const res = await fetch(url)
+    const data = await res.json();
+    displayLyrics(data.lyrics);
 }
+
+//using fetch
+// const getLyric = (artist, title) =>{
+//     const url = `https://api.lyrics.ovh/v1/${artist}/${title}`
+//     // get lyric
+//     fetch(url)
+//         .then(res => res.json())
+//         .then(data => displayLyrics(data.lyrics))
+// }
 
 // show lyrics on display
 const displayLyrics = lyric => {
