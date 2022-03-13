@@ -32,7 +32,8 @@ const displaySongs = (songs) => {
                 <audio
                     controls
                     src="${song.preview}">
-                       
+                    Your browser does not support the
+                    <code>audio</code> element.  
                 </audio>
             </div>
             <div class="col-md-3 text-md-right text-center">
@@ -85,8 +86,7 @@ const displaySpinner = () => {
 }
 
 
-// Your browser does not support the
-// <code>audio</code> element.
+
 {/* <audio controls>
     <source src="${song.preview}" type="audio/mpeg">
 </audio> */}
