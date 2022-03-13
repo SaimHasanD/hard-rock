@@ -1,4 +1,9 @@
 // calling A.P.I to get the song
+const enterButton = event => {
+    if (event.key === 'Enter') {
+        document.getElementById('searchButton').click();
+    }
+}
 const searchSongs = async() => {
     const searchText = document.getElementById('searchText').value;
     const url = `https://api.lyrics.ovh/suggest/${searchText}`
