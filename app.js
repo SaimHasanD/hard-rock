@@ -4,17 +4,17 @@ const enterButton = event => {
         document.getElementById('searchButton').click();
     }
 }
-const searchSongs = async() => {
+const searchSongs = async () => {
     const searchText = document.getElementById('searchText').value;
     const url = `https://api.lyrics.ovh/suggest/${searchText}`
     displaySpinner();
     // get data
-    try{
+    try {
         const res = await fetch(url);
         const data = await res.json();
         displaySongs(data.data);
     }
-    catch (error){
+    catch (error) {
         displayError('Something went wrong!! please try again latter');
     }
 }
@@ -29,8 +29,10 @@ const displaySongs = (songs) => {
             <div class="col-md-9">
                 <h3 class="lyrics-name">${song.title}</h3>
                 <p class="author lead">Album by <span>${song.artist.name}</span></p>
-                <audio controls>
-                    <source src="${song.preview}" type="audio/mpeg">
+                <audio
+                    controls
+                    src="${song.preview}">
+                       
                 </audio>
             </div>
             <div class="col-md-3 text-md-right text-center">
@@ -45,7 +47,7 @@ const displaySongs = (songs) => {
 // get song lyrics
 
 //using fetch
-const getLyric = (artist, title) =>{
+const getLyric = (artist, title) => {
     const url = `https://api.lyrics.ovh/v1/${artist}/${title}`
     // get lyric
     fetch(url)
@@ -81,3 +83,10 @@ const displaySpinner = () => {
     spinner.classList.toggle('d-none');
     songs.classList.toggle('d-none');
 }
+
+
+// Your browser does not support the
+// <code>audio</code> element.
+{/* <audio controls>
+    <source src="${song.preview}" type="audio/mpeg">
+</audio> */}
